@@ -7,6 +7,7 @@ from .models import Product
 
 @api_view(['GET', 'POST'])
 def product_list_create_api_view(request):
+    print(request.user)
     if request.method == 'GET':
         # step 1. collect data from DB
         data = Product.objects.select_related('category').prefetch_related('tags', 'reviews').all()
